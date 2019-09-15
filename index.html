@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>hw11</title>
+</head>
+<body>
+	<script>
+		const Student = function(name, surname,age) {
+			this.name = name;
+			this.surname = surname;
+			this.age = age;
+			this.mark = new Array(30);
+			this.attendance = new Array(30);
+		}
+
+			Student.prototype.getAge = function(){
+	        let bday = this.age.split("/");
+	        let d = new Date();
+	        let studday = bday[0];
+	        let studmonth = bday[1];
+	        let studyear = bday[2];
+	        let currentDay = d.getDate();
+	        let currentMonth = d.getMonth()+1;
+	        let currentYear = d.getFullYear();
+	        let age = currentYear - studyear;
+	        if((currentMonth < studmonth) || ( (currentMonth === studmonth) && currentDay < studday)){
+	            age--;
+	        }
+	        return age; 
+			}
+
+			Student.prototype.getAvarageMark = function() {
+	            
+	            return this.mark.reduce((sum, mark) => {
+	                return sum = sum + mark;
+	            }, 0) / this.mark.length;
+
+	        }
+
+	        Student.prototype.getAverageAttendance = function() {
+	        	return this.attendance.filter(item => item).length / this.attendance.length;
+	   		 },
+	        
+	        Student.prototype.markPush = function(mark) {
+	            if (mark <= 10 && mark >= 0) {
+	                if (this.mark.filter(item => item >= 0).length < 30) {
+	                    return this.mark[this.mark.filter(item => item >= 0).length] = mark;
+	                } else {
+	                    return ('Уже переполнено');
+	                }
+	            } else {
+	                return ('Оценка варьируется от 0 до 10 оценка!');
+	            }
+	        },
+
+	        Student.prototype.present = function() {
+	            if (this.attendance.filter(item => item >= 0).length < 30){
+	                return this.attendance[this.attendance.filter(item => item >= 0).length] = true;
+	            } else {
+	                return 'Всего 30 занятий!';
+	            }
+	        },
+
+	        Student.prototype.absent = function() {
+	            if (this.attendance.filter(item => item >= 0).length < 30){
+	                return this.attendance[this.attendance.filter(item => item >= 0).length] = false;
+	            } else {
+	                return 'Всего 30 занятий!';
+	            }
+	        },
+
+	        Student.prototype.summary = function(){
+	            let avarageMark = this.getAvarageMark();
+	            let avarageAttandance = this.getAverageAttendance();
+	            if (avarageMark > 9 && avarageAttandance > 0.9) {
+	                return ('Ути какой молодчинка');
+	            } else if (avarageMark < 9 && avarageAttandance < 0.9) {
+	                return ('Редиска');
+	            } else {
+	                return ('Норм, но можно лучше');
+	            }
+	        };
+
+	     
+					    
+    
+			let vika = new Student('Vika', 'Kutsova', '20/2/1991');
+   			console.log(vika);
+   			console.log(vika.getAge());
+   			vika.present();
+		    vika.present();
+		    vika.absent();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.absent();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.absent();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.absent();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.absent();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.present();
+		    vika.absent();
+		    vika.present();
+		    vika.present();
+		    
+		    console.log(vika.getAverageAttendance());
+		    vika.markPush(8);
+		    vika.markPush(10);
+		    vika.markPush(6);
+		    vika.markPush(9);
+		    vika.markPush(10);
+		    vika.markPush(7);
+		    vika.markPush(9);
+		    vika.markPush(5);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(8);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(6);
+		    vika.markPush(10);
+		    vika.markPush(9);
+		    vika.markPush(9);
+		    vika.markPush(10);
+		    vika.markPush(5);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(10);
+		    vika.markPush(9);
+		    console.log(vika.getAvarageMark());
+		    console.log(vika.summary());
+	</script> -->
+
+
+
+	
+	
+
+</body>
+</html>
